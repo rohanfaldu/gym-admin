@@ -32,7 +32,13 @@ api.interceptors.response.use(
 
 export const authService = {
   async login(email: string, password: string) {
-    const response = await api.post('/auth/login', { email, password });
+    const response = await api.post(
+      '/auth/login',
+      { email, password },
+      {
+        withCredentials: true, 
+      }
+    );
     return response.data;
   },
 
@@ -49,7 +55,7 @@ export const authService = {
   async logout() {
     const response = await api.post('/auth/logout');
     return response.data;
-  }
+  },
 };
 
 export { api };

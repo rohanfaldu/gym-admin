@@ -8,7 +8,7 @@ import Card from '../../components/ui/Card';
 const LoginPage: React.FC = () => {
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -16,10 +16,13 @@ const LoginPage: React.FC = () => {
   const { user, login } = useAuth();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || 
-    (user?.role === 'SUPER_ADMIN' ? '/super-admin/dashboard' :
-     user?.role === 'GYM_ADMIN' ? '/gym-admin/dashboard' :
-     '/member/dashboard');
+  const from =
+    location.state?.from?.pathname ||
+    (user?.role === 'SUPER_ADMIN'
+      ? '/super-admin/dashboard'
+      : user?.role === 'GYM_ADMIN'
+        ? '/gym-admin/dashboard'
+        : '/member/dashboard');
 
   if (user) {
     return <Navigate to={from} replace />;
@@ -39,9 +42,9 @@ const LoginPage: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -56,9 +59,7 @@ const LoginPage: React.FC = () => {
             </div>
             <span className="text-2xl font-bold text-gray-900">GymSAAS</span>
           </Link>
-          <h2 className="text-3xl font-bold text-gray-900">
-            Welcome back
-          </h2>
+          <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
           <p className="mt-2 text-gray-600">
             Sign in to your account to continue
           </p>
@@ -70,7 +71,9 @@ const LoginPage: React.FC = () => {
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-blue-800">Super Admin:</span>
-              <span className="text-blue-600">admin@gymsaas.com / admin123</span>
+              <span className="text-blue-600">
+                admin@gymsaas.com / admin123
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-blue-800">Gym Owner:</span>
@@ -87,7 +90,10 @@ const LoginPage: React.FC = () => {
         <Card>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Email address
               </label>
               <div className="relative">
@@ -107,7 +113,10 @@ const LoginPage: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
                 Password
               </label>
               <div className="relative">
@@ -128,7 +137,11 @@ const LoginPage: React.FC = () => {
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
                 </button>
               </div>
             </div>
@@ -141,22 +154,28 @@ const LoginPage: React.FC = () => {
                   type="checkbox"
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                <label
+                  htmlFor="remember-me"
+                  className="ml-2 block text-sm text-gray-700"
+                >
                   Remember me
                 </label>
               </div>
 
               <div className="text-sm">
-                <a href="#forgot" className="font-medium text-blue-600 hover:text-blue-500">
+                <a
+                  href="#forgot"
+                  className="font-medium text-blue-600 hover:text-blue-500"
+                >
                   Forgot password?
                 </a>
               </div>
             </div>
 
-            <Button 
-              type="submit" 
-              loading={loading} 
-              size="lg" 
+            <Button
+              type="submit"
+              loading={loading}
+              size="lg"
               className="w-full"
             >
               Sign in
@@ -166,7 +185,10 @@ const LoginPage: React.FC = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               Don't have an account?{' '}
-              <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500">
+              <Link
+                to="/register"
+                className="font-medium text-blue-600 hover:text-blue-500"
+              >
                 Sign up here
               </Link>
             </p>
