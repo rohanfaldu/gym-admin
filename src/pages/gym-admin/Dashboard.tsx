@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+  import React, { useState, useEffect } from 'react';
 import { 
   Users, 
   Calendar, 
@@ -69,7 +69,7 @@ const GymAdminDashboard: React.FC = () => {
     try {
       setLoading(true);
       // This would use the actual gym ID from the authenticated user
-      const gymId = 'current-gym-id'; // Replace with actual gym ID
+      const gymId = 'cmdmtf6qy00018nhrd0duebou'; // Replace with actual gym ID
       const response = await api.get(`/gyms/${gymId}/dashboard`);
       setStats(response.data.stats);
       setRecentMembers(response.data.recentMembers);
@@ -212,7 +212,7 @@ const GymAdminDashboard: React.FC = () => {
         <Card>
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-semibold text-gray-900">Recent Members</h3>
-            <Button variant="ghost" size="sm">View all</Button>
+            {/* <Button variant="ghost" size="sm">View all</Button> */}
           </div>
           <div className="space-y-4">
             {recentMembers.length > 0 ? (

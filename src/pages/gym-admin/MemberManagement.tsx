@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Users, 
   Search, 
   Filter, 
   UserPlus,
+  Plus,
   Mail,
   Phone,
   Calendar,
@@ -42,6 +44,7 @@ interface Member {
 }
 
 const MemberManagement: React.FC = () => {
+  const navigate = useNavigate();
   const [members, setMembers] = useState<Member[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -111,7 +114,7 @@ const MemberManagement: React.FC = () => {
         </div>
         <Button>
           <UserPlus className="w-4 h-4 mr-2" />
-          Add Member
+          <span onClick={() => navigate('/gym-admin/members/add')}>Add Member</span>
         </Button>
       </div>
 

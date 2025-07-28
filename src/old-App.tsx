@@ -35,7 +35,6 @@ import MemberProfile from './pages/member/Profile';
 import ClassBooking from './pages/member/ClassBooking';
 import Subscriptions from './pages/member/Subscriptions';
 
-
 // Layout components
 import SuperAdminLayout from './components/layouts/SuperAdminLayout';
 import GymAdminLayout from './components/layouts/GymAdminLayout';

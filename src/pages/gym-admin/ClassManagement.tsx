@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Calendar, 
   Search, 
@@ -40,6 +41,7 @@ interface Class {
 }
 
 const ClassManagement: React.FC = () => {
+  const navigate = useNavigate();
   const [classes, setClasses] = useState<Class[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -114,7 +116,7 @@ const ClassManagement: React.FC = () => {
         </div>
         <Button>
           <Plus className="w-4 h-4 mr-2" />
-          Create Class
+          <span onClick={() => navigate('/gym-admin/classes/add')}>Create Class</span>
         </Button>
       </div>
 
