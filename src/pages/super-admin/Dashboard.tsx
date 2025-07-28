@@ -13,6 +13,8 @@ import Card from '../../components/ui/Card';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import { api } from '../../services/authService';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { Link } from 'react-router-dom';
+
 
 const SuperAdminDashboard: React.FC = () => {
   const [stats, setStats] = useState<any>(null);
