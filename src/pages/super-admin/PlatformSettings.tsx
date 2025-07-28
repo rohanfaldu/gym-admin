@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Settings, 
-  Globe, 
-  CreditCard, 
-  Mail, 
-  Shield, 
+import {
+  Building2,
+  Globe,
+  CreditCard,
+  Mail,
+  Shield,
   Database,
   Bell,
   Palette,
-  Save
+  Save,
 } from 'lucide-react';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
@@ -35,16 +35,19 @@ const PlatformSettings: React.FC = () => {
     smsApiKey: '',
     primaryColor: '#2563EB',
     secondaryColor: '#0891B2',
-    accentColor: '#EA580C'
+    accentColor: '#EA580C',
   });
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value, type } = e.target;
-    setSettings(prev => ({
+    setSettings((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+      [name]:
+        type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -52,7 +55,7 @@ const PlatformSettings: React.FC = () => {
     try {
       setLoading(true);
       // API call would go here
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API call
       toast.success('Settings saved successfully');
     } catch (error) {
       toast.error('Failed to save settings');
@@ -66,7 +69,9 @@ const PlatformSettings: React.FC = () => {
       {/* Page Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Platform Settings</h1>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Platform Settings
+          </h1>
           <p className="text-gray-600 mt-2">
             Configure global platform settings and preferences
           </p>
@@ -84,7 +89,9 @@ const PlatformSettings: React.FC = () => {
             <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <Globe className="w-5 h-5 text-blue-600" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900">General Settings</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              General Settings
+            </h2>
           </div>
 
           <div className="space-y-4">
@@ -163,7 +170,9 @@ const PlatformSettings: React.FC = () => {
             <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
               <Building2 className="w-5 h-5 text-green-600" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900">Business Settings</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              Business Settings
+            </h2>
           </div>
 
           <div className="space-y-4">
@@ -232,7 +241,9 @@ const PlatformSettings: React.FC = () => {
             <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
               <CreditCard className="w-5 h-5 text-purple-600" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900">Payment Settings</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              Payment Settings
+            </h2>
           </div>
 
           <div className="space-y-4">
@@ -272,7 +283,9 @@ const PlatformSettings: React.FC = () => {
             <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
               <Bell className="w-5 h-5 text-orange-600" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900">Notifications</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              Notifications
+            </h2>
           </div>
 
           <div className="space-y-4">
@@ -341,7 +354,9 @@ const PlatformSettings: React.FC = () => {
             <div className="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center">
               <Palette className="w-5 h-5 text-pink-600" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900">Theme Settings</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              Theme Settings
+            </h2>
           </div>
 
           <div className="space-y-4">
@@ -419,7 +434,9 @@ const PlatformSettings: React.FC = () => {
             <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
               <Shield className="w-5 h-5 text-red-600" />
             </div>
-            <h2 className="text-xl font-semibold text-gray-900">Security Settings</h2>
+            <h2 className="text-xl font-semibold text-gray-900">
+              Security Settings
+            </h2>
           </div>
 
           <div className="space-y-4">
@@ -431,7 +448,8 @@ const PlatformSettings: React.FC = () => {
                 </span>
               </div>
               <p className="text-sm text-yellow-700 mt-1">
-                JWT secrets, database credentials, and API keys should be configured in your server environment.
+                JWT secrets, database credentials, and API keys should be
+                configured in your server environment.
               </p>
             </div>
 
@@ -454,7 +472,9 @@ const PlatformSettings: React.FC = () => {
                 <label className="text-sm font-medium text-gray-700">
                   Password Policy
                 </label>
-                <span className="text-sm text-gray-500">Minimum 6 characters</span>
+                <span className="text-sm text-gray-500">
+                  Minimum 6 characters
+                </span>
               </div>
             </div>
           </div>

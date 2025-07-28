@@ -13,6 +13,7 @@ import { api } from '../../services/authService';
 import Card from '../../components/ui/Card';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import Button from '../../components/ui/Button';
 
 interface DashboardStats {
   totalMembers: number;
