@@ -3,7 +3,7 @@ import {
   Building2, 
   Search, 
   Filter, 
-  MoreVertical,
+  Plus,
   CheckCircle,
   XCircle,
   Clock,
@@ -17,6 +17,7 @@ import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 interface Gym {
   id: string;
@@ -49,6 +50,7 @@ const GymManagement: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchGyms();
@@ -116,6 +118,10 @@ const GymManagement: React.FC = () => {
             Manage gym registrations and monitor platform activity
           </p>
         </div>
+        <Button onClick={() => navigate('/super-admin/gyms/add')}>
+          <Plus className="w-4 h-4 mr-2" />
+          Add Gym
+        </Button>
       </div>
 
       {/* Filters */}
