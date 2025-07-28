@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { 
-  Settings, 
+  Building2, 
   Globe, 
   CreditCard, 
   Mail, 
