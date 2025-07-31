@@ -1,0 +1,176 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("super_admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model Gym {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  password    String
+  gymCode     String   @unique
+  location    String
+  city        String
+  phone       String
+  description String?
+  services    String   @default("[]")
+  amenities   String   @default("[]")
+  workingHours String  @default("6:00 AM - 10:00 PM")
+  priceRange  String   @default("$$")
+  category    String   @default("Premium")
+  image       String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  members       Member[]
+  subscriptions Subscription[]
+  trainers      Trainer[]
+  classes       Class[]
+  tickets       SupportTicket[]
+  billings      Billing[]
+  activityLogs  ActivityLog[]
+  revenues      Revenue[]
+
+  @@map("gyms")
+}
+
+model Member {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  phone     String
+  gymId     String
+  status    String   @default("pending")
+  joinedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  gym Gym @relation(fields: [gymId], references: [id], onDelete: Cascade)
+
+  @@map("members")
+}
+
+model Subscription {
+  id        String   @id @default(cuid())
+  gymId     String
+  planName  String
+  price     Float
+  duration  Int
+  features  String   @default("[]")
+  isActive  Boolean  @default(true)
+  startDate DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+
+  gym Gym @relation(fields: [gymId], references: [id], onDelete: Cascade)
+
+  @@map("subscriptions")
+}
+
+model Trainer {
+  id         String @id @default(cuid())
+  name       String
+  email      String
+  phone      String
+  specialty  String
+  experience String
+  image      String?
+  gymId      String
+
+  gym     Gym     @relation(fields: [gymId], references: [id], onDelete: Cascade)
+  classes Class[]
+
+  @@map("trainers")
+}
+
+model Class {
+  id        String @id @default(cuid())
+  name      String
+  time      String
+  duration  String
+  day       String
+  capacity  Int    @default(20)
+  trainerId String
+  gymId     String
+
+  trainer Trainer @relation(fields: [trainerId], references: [id], onDelete: Cascade)
+  gym     Gym     @relation(fields: [gymId], references: [id], onDelete: Cascade)
+
+  @@map("classes")
+}
+
+model Billing {
+  id          String   @id @default(cuid())
+  gymId       String
+  amount      Float
+  description String
+  status      String   @default("pending")
+  dueDate     DateTime
+  paidDate    DateTime?
+  createdAt   DateTime @default(now())
+
+  gym Gym @relation(fields: [gymId], references: [id], onDelete: Cascade)
+
+  @@map("billings")
+}
+
+model SupportTicket {
+  id          String   @id @default(cuid())
+  gymId       String
+  title       String
+  description String
+  status      String   @default("open")
+  priority    String   @default("medium")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  gym Gym @relation(fields: [gymId], references: [id], onDelete: Cascade)
+
+  @@map("support_tickets")
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  gymId     String?
+  action    String
+  details   String
+  userType  String
+  userId    String
+  createdAt DateTime @default(now())
+
+  gym Gym? @relation(fields: [gymId], references: [id], onDelete: Cascade)
+
+  @@map("activity_logs")
+}
+
+model Revenue {
+  id        String   @id @default(cuid())
+  gymId     String
+  amount    Float
+  source    String
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  gym Gym @relation(fields: [gymId], references: [id], onDelete: Cascade)
+
+  @@map("revenues")
+}

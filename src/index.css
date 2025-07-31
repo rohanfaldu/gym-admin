@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .glow-text {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .glow-border {
+    box-shadow: 0 0 20px currentColor;
+  }
+}

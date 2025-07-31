@@ -1,0 +1,43 @@
+# PostgreSQL Database for GymFinder
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: gymfinder_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: gymfinder_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - gymfinder_network
+
+  # Optional: pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: gymfinder_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gymfinder.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    networks:
+      - gymfinder_network
+
+volumes:
+  postgres_data:
+
+networks:
+  gymfinder_network:
+    driver: bridge
