@@ -44,6 +44,7 @@ const AdminApp: React.FC = () => {
     localStorage.removeItem('adminToken');
     localStorage.removeItem('adminUser');
     setUser(null);
+    window.location.href = '/';
   };
 
   if (loading) {

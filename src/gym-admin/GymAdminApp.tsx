@@ -55,6 +55,7 @@ const GymAdminApp: React.FC = () => {
     localStorage.removeItem('gymAdminToken');
     localStorage.removeItem('gymAdminUser');
     setUser(null);
+    window.location.href = '/';
   };
 
   if (loading) {

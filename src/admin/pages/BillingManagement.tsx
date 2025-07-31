@@ -49,7 +49,7 @@ const BillingManagement: React.FC = () => {
   const fetchBillings = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('https://gym-api-qzjz.onrender.com/api/billing', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/billing`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -103,7 +103,7 @@ const BillingManagement: React.FC = () => {
   const fetchGyms = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('https://gym-api-qzjz.onrender.com/api/gyms', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/gyms`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -122,7 +122,7 @@ const BillingManagement: React.FC = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('https://gym-api-qzjz.onrender.com/api/billing', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/billing`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
