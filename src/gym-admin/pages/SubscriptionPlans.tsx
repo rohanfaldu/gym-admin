@@ -54,7 +54,7 @@ const SubscriptionPlans: React.FC = () => {
       }
 
       const user = JSON.parse(userData);
-      const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/subscriptions`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/subscriptions`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -91,7 +91,7 @@ const SubscriptionPlans: React.FC = () => {
       if (!token || !userData) return;
 
       const user = JSON.parse(userData);
-      const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/subscriptions`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/subscriptions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ const SubscriptionPlans: React.FC = () => {
       if (!token || !userData) return;
 
       const user = JSON.parse(userData);
-      const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/subscriptions/${editingPlan.id}`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/subscriptions/${editingPlan.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ const SubscriptionPlans: React.FC = () => {
         if (!token || !userData) return;
 
         const user = JSON.parse(userData);
-        const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/subscriptions/${id}`, {
+        const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/subscriptions/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`

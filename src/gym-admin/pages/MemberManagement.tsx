@@ -64,7 +64,7 @@ const MemberManagement: React.FC = () => {
       }
 
       const user = JSON.parse(userData);
-      const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/members`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/members`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -103,7 +103,7 @@ const MemberManagement: React.FC = () => {
       if (!token || !userData) return;
 
       const user = JSON.parse(userData);
-      const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/members`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/members`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ const MemberManagement: React.FC = () => {
         if (!token || !userData) return;
 
         const user = JSON.parse(userData);
-        const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/members/${id}`, {
+        const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/members/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -168,7 +168,7 @@ const MemberManagement: React.FC = () => {
       if (!token || !userData) return;
 
       const user = JSON.parse(userData);
-      const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/members/${id}`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/members/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -197,7 +197,7 @@ const MemberManagement: React.FC = () => {
       if (!token || !userData) return;
 
       const user = JSON.parse(userData);
-      const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/members/${id}`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/members/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

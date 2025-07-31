@@ -57,7 +57,7 @@ const SupportLogs: React.FC = () => {
   const fetchTickets = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/support/tickets', {
+      const response = await fetch('https://gym-api-0acd.onrender.com/api/support/tickets', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -113,7 +113,7 @@ const SupportLogs: React.FC = () => {
   const fetchLogs = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/logs', {
+      const response = await fetch('https://gym-api-0acd.onrender.com/api/logs', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -161,7 +161,7 @@ const SupportLogs: React.FC = () => {
   const handleUpdateTicketStatus = async (ticketId: string, newStatus: string) => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:3001/api/support/tickets/${ticketId}`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/support/tickets/${ticketId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -185,7 +185,7 @@ const SupportLogs: React.FC = () => {
   const exportLogs = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/logs/export', {
+      const response = await fetch('https://gym-api-0acd.onrender.com/api/logs/export', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

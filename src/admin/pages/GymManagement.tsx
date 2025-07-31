@@ -67,7 +67,7 @@ const GymManagement: React.FC = () => {
   const fetchGyms = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/gyms', {
+      const response = await fetch('https://gym-api-0acd.onrender.com/api/gyms', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -109,7 +109,7 @@ const GymManagement: React.FC = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:3001/api/gyms', {
+      const response = await fetch('https://gym-api-0acd.onrender.com/api/gyms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ const GymManagement: React.FC = () => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:3001/api/gyms/${id}`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gyms/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

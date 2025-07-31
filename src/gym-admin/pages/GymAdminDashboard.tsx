@@ -66,7 +66,7 @@ const GymAdminDashboard: React.FC = () => {
       }
 
       const user = JSON.parse(userData);
-      const response = await fetch(`http://localhost:3001/api/gym/${user.gymId}/dashboard/stats`, {
+      const response = await fetch(`https://gym-api-0acd.onrender.com/api/gym/${user.gymId}/dashboard/stats`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

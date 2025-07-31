@@ -33,7 +33,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, loginType }) =
     console.log('📧 Email:', formData.email);
 
     try {
-      const loginUrl = loginType === 'super_admin' ? 'http://localhost:3001/api/auth/login' : 'http://localhost:3001/api/gym-auth/login';
+      const loginUrl = loginType === 'super_admin' ? 'https://gym-api-0acd.onrender.com/api/auth/login' : 'https://gym-api-0acd.onrender.com/api/gym-auth/login';
       console.log('🌐 Making request to:', loginUrl);
 
       const response = await fetch(loginUrl, {

@@ -9,7 +9,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'https://gym-api-0acd.onrender.com',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path
