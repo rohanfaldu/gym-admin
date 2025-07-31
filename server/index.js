@@ -36,8 +36,7 @@ async function testDatabaseConnection() {
 // Middleware
 app.use(cors({
   origin: [
-    'http://localhost:5173', 
-    'https://localhost:5173',
+    'https://gym-admin-i.netlify.app', 
     process.env.FRONTEND_URL
   ].filter(Boolean),
   credentials: true,

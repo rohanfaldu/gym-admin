@@ -26,7 +26,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
         },
         body: JSON.stringify(credentials),
       });
-
+      console.log(response, 'response');
       if (!response.ok) {
         const errorText = await response.text();
         let errorData;
